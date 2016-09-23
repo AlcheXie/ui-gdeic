@@ -1,0 +1,9 @@
+@mixin a($color) {
+    color: $color;
+    cursor: pointer;
+    &:link,
+    &:hover,
+    &:visited {
+        text-decoration: none;
+    }
+}

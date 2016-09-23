@@ -1,0 +1,34 @@
+@mixin caret($direction, $width, $color) {
+    display: block;
+    width: 0;
+    height: 0;
+    border: $width solid transparent;
+    @if $direction==top {
+        border-bottom-color: $color;
+    }
+    @else if $direction==right {
+        border-left-color: $color;
+    }
+    @else if $direction==bottom {
+        border-top-color: $color;
+    }
+    @else if $direction==left {
+        border-right-color: $color;
+    }
+    @else if $direction==top-left {
+        border-top-color: $color;
+        border-left-color: $color;
+    }
+    @else if $direction==bottom-left {
+        border-bottom-color: $color;
+        border-left-color: $color;
+    }
+    @else if $direction==bottom-right {
+        border-bottom-color: $color;
+        border-right-color: $color;
+    }
+    @else if $direction==top-right {
+        border-top-color: $color;
+        border-right-color: $color;
+    }
+}

@@ -1,0 +1,24 @@
+@mixin background-origin($box) {
+    -webkit-background-origin: $box;
+    -moz-background-origin: $box;
+    background-origin: $box;
+}
+
+@mixin background-clip($clip) {
+    -webkit-background-clip: $clip;
+    -moz-background-clip: $clip;
+    background-clip: $clip;
+}
+
+@mixin background-size($size) {
+    -webkit-background-size: $size;
+    -moz-background-size: $size;
+    background-size: $size;
+}
+
+@function fnGetColor($color, $number) {
+    $red: red($color);
+    $green: green($color);
+    $blue: blue($color);
+    @return rgba($red + $number, $green + $number, $blue + $number, 1);
+}

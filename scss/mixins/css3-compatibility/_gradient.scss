@@ -1,0 +1,102 @@
+@mixin linear-gradient($property, $angle, $startColor, $endColor, $colorStops: null) {
+    @if $property=='background-image' {
+        background-color: $startColor;
+    }
+    @if $colorStops==null {
+        #{$property}: -webkit-gradient(linear, _fnGetOldWebkitLinearDirection($angle), from($startColor), to($endColor));
+        #{$property}: -webkit-linear-gradient(($angle - 90)+deg, $startColor, $endColor);
+        #{$property}: -moz-linear-gradient(#{$angle}deg, $startColor, $endColor);
+        #{$property}: -o-linear-gradient(#{$angle}deg, $startColor, $endColor);
+        #{$property}: linear-gradient(#{$angle}deg, $startColor, $endColor);
+    }
+    @else {
+        #{$property}: -webkit-gradient(linear, _fnGetOldWebkitLinearDirection($angle), from($startColor), _fnGetOldWebkitColorStops($colorStops), to($endColor));
+        #{$property}: -webkit-linear-gradient(($angle - 90)+deg, $startColor, _fnGetColorStops($colorStops), $endColor);
+        #{$property}: -moz-linear-gradient(#{$angle}deg, $startColor, _fnGetColorStops($colorStops), $endColor);
+        #{$property}: -o-linear-gradient(#{$angle}deg, $startColor, _fnGetColorStops($colorStops), $endColor);
+        #{$property}: linear-gradient(#{$angle}deg, $startColor, _fnGetColorStops($colorStops), $endColor);
+    }
+}
+
+@mixin radial-gradient() {}
+
+@mixin repeating-linear-gradient() {}
+
+@mixin repeating-radial-gradient() {}
+
+@function _fnGetColorStops($colorStops) {
+    $colorStopsText: null;
+    @each $percent,
+    $color in $colorStops {
+        $colorStopsText: $colorStopsText, $color $percent;
+    }
+    @return $colorStopsText;
+}
+
+@function _fnGetOldWebkitLinearDirection($angle) {
+    $direction: null;
+    @while $angle<0 {
+        $angle: $angle + 360;
+    }
+    @while $angle>359 {
+        $angle: $angle - 360;
+    }
+    @if $angle>=0 {
+        @if $angle<=23 {
+            $direction: right center, left center;
+        }
+        @else {
+            @if $angle <=67 {
+                $direction: right top, left bottom;
+            }
+            @else {
+                @if $angle <=112 {
+                    $direction: center top, center bottom;
+                }
+                @else {
+                    @if $angle <=157 {
+                        $direction: left top, right bottom;
+                    }
+                    @else {
+                        @if $angle <=202 {
+                            $direction: left center, right center;
+                        }
+                        @else {
+                            @if $angle <=247 {
+                                $direction: left bottom, right top;
+                            }
+                            @else {
+                                @if $angle <=247 {
+                                    $direction: center bottom, center top;
+                                }
+                                @else {
+                                    @if $angle <=292 {
+                                        $direction: center bottom, center top;
+                                    }
+                                    @else {
+                                        @if $angle <=336 {
+                                            $direction: right bottom, left top;
+                                        }
+                                        @else {
+                                            $direction: right center, left center;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @return $direction;
+}
+
+@function _fnGetOldWebkitColorStops($colorStops) {
+    $colorStopsText: null;
+    @each $percent,
+    $color in $colorStops {
+        $colorStopsText: $colorStopsText, color-stop($percent, $color);
+    }
+    @return $colorStopsText;
+}

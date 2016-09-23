@@ -1,0 +1,16 @@
+@mixin box-sizing($box) {
+    -webkit-box-sizing: $box;
+    -moz-box-sizing: $box;
+    box-sizing: $box;
+}
+
+@mixin resize($direction) {
+    -moz-resize: $direction;
+    resize: $direction;
+}
+
+@mixin user-select($option) {
+    -webkit-user-select: $option;
+    -moz-user-select: $option;
+    -ms-user-select: $option;
+}
