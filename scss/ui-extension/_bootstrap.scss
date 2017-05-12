@@ -1,0 +1,96 @@
+@import "../mixins/mixins";
+@import "common";
+$xlWidth: 1400px;
+$bsScale: ((xs, 0, 767px), (sm, 768px, 991px), (md, 992px, 1199px), (lg, 1200px, 1399px), (xl, $xlWidth, none));
+@import "bootstrap/badge";
+@import "bootstrap/callout";
+@import "bootstrap/flex-grid";
+@import "bootstrap/memo";
+@import "bootstrap/media-query";
+
+/* additional styles */
+
+// responsive for x-large screen
+@media (min-width: $xlWidth) {
+    .col-xl-pull-0 {
+        right: auto;
+    }
+    .col-xl-push-0 {
+        left: auto;
+    }
+    @for $i from 1 through 12 {
+        .col-xl-#{$i} {
+            position: relative;
+            float: left;
+            width: (100% /12) * $i;
+            min-height: 1px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        .col-xl-pull-#{$i} {
+            right: (100% /12) * $i;
+        }
+        .col-xl-push-#{$i} {
+            left: (100% /12) * $i;
+        }
+        .col-xl-offset-#{$i} {
+            margin-left: (100% /12) * $i;
+        }
+    }
+}
+
+// selected list group item
+.list-group-item {
+    &.selected {
+        background-color: $list-group-hover-bg;
+    }
+}
+·
+
+/* modifying styles */
+
+// badge
+.badge {
+    >.btn {
+        background-color: transparent;
+    }
+}
+
+// forms
+.checkbox,
+.radio {
+    >label {
+        display: block;
+    }
+}
+
+.control-label {
+    white-space: nowrap;
+}
+
+// table
+.table {
+    border-top: fnDefaultBorder($table-border-color);
+    border-bottom: fnDefaultBorder($table-border-color);
+    thead {
+        th,
+        td {
+            vertical-align: middle;
+        }
+    }
+    tbody {
+        th,
+        td {
+            &.text-middle {
+                vertical-align: middle;
+            }
+        }
+    }
+    th,
+    td {
+        &.td-check {
+            width: 40px;
+            text-align: center;
+        }
+    }
+}

@@ -1,0 +1,46 @@
+.flex {
+    @include display-box();
+    &.flex-row {
+        @include box-direction(row);
+        &.reverse {
+            @include box-direction(row-reverse);
+        }
+    }
+    &.flex-column {
+        @include box-direction(column);
+        &.reverse {
+            @include box-direction(column-reverse);
+        }
+    }
+    $aligns: (('start', flex-start), ('end', flex-end), (center, center), (baseline, baseline), (stretch, stretch));
+    @each $name,
+    $align in $aligns {
+        &.flex-item-#{$name} {
+            @include box-align-items($align);
+        }
+        >.flex-self-#{$name} {
+            @include flex-align-self($align);
+        }
+    }
+    @mixin _media-query-flex($scale) {
+        @for $i from 1 through 12 {
+            .flex-#{$scale}-#{$i} {
+                @include flex($i);
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+        }
+    }
+    @each $scale,
+    $min,
+    $max in $bsScale {
+        @if $min==0 {
+            @include _media-query-flex($scale);
+        }
+        @else {
+            @media (min-width: $min) {
+                @include _media-query-flex($scale);
+            }
+        }
+    }
+}
