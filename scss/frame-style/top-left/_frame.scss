@@ -1,0 +1,286 @@
+@import "../../mixins/mixins";
+@import "../wechat-menu";
+@import "hover-menu";
+@import "slide-menu";
+$collapseMediaWidth: 992px;
+$collapsedAsideWidth: 60px;
+$wechatSmallScreenWidth: 768px;
+@mixin _collapsed-hover($collapsedAsideWidth) {
+    >.gdeic-aside {
+        >nav.gdeic-aside-nav>a,
+        >ul.gdeic-aside-nav>li>a {
+            &:hover {
+                &:before {
+                    content: attr(data-name);
+                    position: absolute;
+                    left: $collapsedAsideWidth + 2px;
+                    @include transform(translateY(50%));
+                    border: fnDefaultBorder(#FFF);
+                    padding: 0 .5em 0 1em;
+                    @include border-radius(.5em);
+                    @include border-top-left-radius(1em);
+                    @include border-bottom-left-radius(1em);
+                    background-color: #000;
+                    color: #FFF;
+                    font-size: smaller;
+                    line-height: 1.5em;
+                }
+            }
+        }
+    }
+}
+
+@mixin frame() {
+    body {
+        background-color: $bodyColor!important;
+        font-size: $mainFontSize;
+    }
+    .gdeic {
+        >.gdeic-header,
+        >.gdeic-aside {
+            position: fixed;
+            z-index: 9;
+            font-family: $mainFontFamily;
+            >.gdeic-aside-nav {
+                @if $frame=='top-left' {
+                    margin-top: 30px;
+                }
+                @else {
+                    margin-top: 30px + $headerHeight;
+                }
+            }
+        }
+        >.gdeic-header {
+            top: 0;
+            width: 100%;
+            height: $headerHeight;
+            @if $frame=='left-top' {
+                margin-left: $asideWidth;
+                @include transition(margin-left .5s);
+            }
+            border-bottom: fnDefaultBorder($headerHighlightColor);
+            background-color: $headerColor;
+            .gdeic-header-title {
+                display: inline-block;
+                margin: 0 1em;
+                color: $asideColor;
+                font-size: $mainFontSize * 1.5;
+                line-height: $headerHeight;
+                @include a(currentColor);
+            }
+            ul.gdeic-header-navbar {
+                // float: right;
+                position: fixed;
+                top: 0;
+                right: 0;
+                >li {
+                    position: relative;
+                    float: right;
+                    >a {
+                        display: inline-block;
+                        height: $headerHeight;
+                        padding: 0 1em;
+                        line-height: $headerHeight;
+                        @include a($asideColor);
+                        &:hover {
+                            background-color: $headerHighlightColor;
+                        }
+                    }
+                    >ul {
+                        display: none;
+                        position: absolute;
+                        top: $headerHeight;
+                        right: 0;
+                        border: fnDefaultBorder($headerHighlightColor);
+                        border-top: none;
+                        background-color: $contentNavColor;
+                        >li {
+                            >a {
+                                display: block;
+                                min-width: 8em;
+                                padding: .5em 1em;
+                                white-space: nowrap;
+                                @include a($asideColor);
+                                &:hover {
+                                    background-color: $headerColor;
+                                }
+                            }
+                        }
+                    }
+                    &.gdeic-header-navbar-caret {
+                        >a {
+                            padding-right: 2em;
+                            &:after {
+                                content: "";
+                                position: absolute;
+                                top: $headerHeight / 2 - 2px;
+                                right: 0;
+                                margin: 0 1em;
+                                @include caret(bottom, .3em, $asideColor);
+                            }
+                        }
+                    }
+                    &:hover {
+                        >ul {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+        >.gdeic-aside {
+            height: 100%;
+            @if $frame=='left-top' {
+                margin-top: -$headerHeight;
+            }
+            overflow-y: auto;
+            background-color: $asideColor;
+            @include transition(width .5s);
+            >nav.gdeic-aside-nav>a,
+            >ul.gdeic-aside-nav>li>a {
+                border-top: fnDefaultBorder(transparent);
+                border-bottom: fnDefaultBorder(transparent);
+                @include transition(padding .5s);
+            }
+            >.gdeic-aside-toolbar {
+                position: fixed;
+                bottom: 0;
+                height: 3em;
+                overflow: hidden;
+                @include transition(width .5s);
+                background-color: $asideToolbarColor;
+                line-height: 3em;
+                @include display-box();
+                >.gdeic-aside-toolbar-item {
+                    text-align: center;
+                    font-size: 1.5em;
+                    @include box-flex(1);
+                    @include a($asideHighlightColor);
+                    &:hover {
+                        color: $headerColor;
+                    }
+                }
+            }
+        }
+        >.gdeic-content {
+            min-width: 768px - $collapsedAsideWidth;
+            margin-top: $headerHeight;
+            margin-left: $asideWidth;
+            padding: 15px;
+            @include transition(margin-left .5s);
+            @mixin _nav() {
+                min-width: 768px - $collapsedAsideWidth;
+                height: $contentNavHeight;
+                margin: -15px -15px 15px;
+                padding: 0 15px;
+                background-color: $contentNavColor;
+                border-bottom: fnDefaultBorder($headerColor);
+                font-family: $mainFontFamily;
+            }
+            @mixin _nav-a() {
+                display: inline-block;
+                @include box-sizing(border-box);
+                padding: 0 1em;
+                line-height: $contentNavHeight - 2px;
+                @include a ($asideColor);
+                &:hover,
+                &.active {
+                    border-bottom: 2px solid $asideColor;
+                    background-color: transparent;
+                }
+            }
+            .gdeic-content-navbar {
+                position: fixed;
+                z-index: 8;
+                width: 100%;
+                ~div {
+                    padding-top: 3em;
+                }
+            }
+            nav.gdeic-content-navbar {
+                @include _nav();
+                >a {
+                    @include _nav-a();
+                }
+            }
+            ul.gdeic-content-navbar {
+                @include _nav();
+                >li {
+                    display: inline-block;
+                    >a {
+                        @include _nav-a();
+                    }
+                }
+            }
+        }
+    }
+    // set aside menu
+    @if $menuStyle=='hover' {
+        @include hover-menu();
+    }
+    @else if $menuStyle=='slide' {
+        @include slide-menu();
+    }
+    // ie-warning style
+    .gdeic-ie-warning {
+        +.gdeic {
+            >.gdeic-header {
+                top: 50px;
+                ul.gdeic-header-navbar {
+                    top: 50px;
+                }
+            }
+        }
+    }
+    // set wechat menu
+    @if $wechat==true {
+        .gdeic {
+            >.gdeic-header {
+                &.hidden {
+                    display: none;
+                    +.gdeic-aside {
+                        top: 0;
+                        +.gdeic-content {
+                            margin-top: 0;
+                        }
+                    }
+                }
+            }
+            >ul.gdeic-wechat {
+                display: none;
+            }
+        }
+        @media (max-width:$collapseMediaWidth) {
+            .gdeic {
+                >.gdeic-header {
+                    display: none;
+                }
+                >.gdeic-aside {
+                    width: 0;
+                    >.gdeic-aside-toolbar {
+                        width: 0;
+                    }
+                }
+                >.gdeic-content {
+                    margin-top: 0;
+                    margin-left: 0!important;
+                    .gdeic-content-navbar {
+                        display: none;
+                        ~div {
+                            padding-top: 0;
+                        }
+                    }
+                }
+            }
+            @include wechat-menu($asideColor, $asideHighlightColor, $headerColor, $mainFontFamily);
+        }
+        @media(max-width:$wechatSmallScreenWidth) {
+            .gdeic {
+                >.gdeic-content {
+                    padding: 0;
+                    min-width: initial;
+                }
+            }
+        }
+    }
+}

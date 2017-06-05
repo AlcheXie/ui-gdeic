@@ -1,0 +1,91 @@
+@import "../mixins/mixins";
+@mixin wechat-menu($menuColor, $subMenuColor, $textColor, $mainFontFamily) {
+    .gdeic {
+        >ul.gdeic-wechat {
+            position: fixed;
+            bottom: 0;
+            @include display-box();
+            width: 100%;
+            height: 3em;
+            background-color: $menuColor;
+            line-height: 3em;
+            text-align: center;
+            >li {
+                position: relative;
+                &:not(:first-child) {
+                    border-left: fnDefaultBorder($subMenuColor);
+                }
+                >a {
+                    display: block;
+                    @include a($textColor);
+                    font-size: 1.2em;
+                    font-family: $mainFontFamily;
+                }
+                >ul {
+                    position: absolute;
+                    @include box-sizing(border-box);
+                    width: 100%;
+                    border: fnDefaultBorder($menuColor);
+                    background-color: $subMenuColor;
+                    &:before {
+                        content: "";
+                        position: absolute;
+                        top: -1em;
+                        right: .2em;
+                        display: block;
+                        @include caret(bottom-right, 5px, $textColor);
+                    }
+                    >li {
+                        &:not(:last-child) {
+                            border-bottom: fnDefaultBorder($menuColor);
+                        }
+                        >a {
+                            @include a($textColor);
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+                    }
+                }
+                &:hover {
+                    background-color: $subMenuColor;
+                    >ul {
+                        bottom: 3em;
+                        @include box-shadow(0 0 10px rgba(0, 0, 0, .5));
+                        &:before {
+                            display: none;
+                        }
+                        >li {
+                            >a {
+                                display: block;
+                                @include a($textColor);
+                                &:hover {
+                                    background-color: $menuColor;
+                                }
+                            }
+                        }
+                    }
+                }
+                &.gdeic-wechat-button {
+                    width: 3em;
+                    >button {
+                        display: block;
+                        width: 100%;
+                        height: 3em;
+                        border: none;
+                        background-color: transparent;
+                        font-size: 1.2em;
+                        color: $textColor;
+                        &:disabled {
+                            background-color: $subMenuColor;
+                            color: $menuColor;
+                        }
+                    }
+                }
+                &:not(.gdeic-wechat-button) {
+                    @include box-flex(1);
+                }
+            }
+        }
+    }
+}
