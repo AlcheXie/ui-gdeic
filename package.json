@@ -1,5 +1,5 @@
 {
-  "name": "gdeic-ui",
+  "name": "ui-gdeic",
   "version": "1.0.0",
   "description": "Stylesheets for GDEIC's projects",
   "scripts": {
@@ -7,6 +7,15 @@
   },
   "author": "AlcheXie",
   "license": "MIT",
+  "main": "gulpfile.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlcheXie/ui-gdeic.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AlcheXie/ui-gdeic/issues"
+  },
+  "homepage": "https://github.com/AlcheXie/ui-gdeic#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-clean-css": "^2.0.12",
