@@ -1,16 +1,4 @@
- @mixin _media-query-min($scale) {}
- 
- @mixin _media-query-max($scale) {}
- 
- @mixin _media-query-between($scale) {
-     // float
-     .pull-left-#{$scale} {
-         float: left!important;
-     }
-     .pull-right-#{$scale} {
-         float: right!important;
-     }
-     // display
+ @mixin _media-query-min($scale) {
      .block-#{$scale} {
          display: block!important;
      }
@@ -20,7 +8,17 @@
      .inline-#{$scale} {
          display: inline!important;
      }
-     // form
+ }
+ 
+ @mixin _media-query-max($scale) {}
+ 
+ @mixin _media-query-between($scale) {
+     .pull-left-#{$scale} {
+         float: left!important;
+     }
+     .pull-right-#{$scale} {
+         float: right!important;
+     }
      .form-horizontal {
          .form-group {
              >.form-group-wrap-#{$scale} {
