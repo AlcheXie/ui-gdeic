@@ -9,20 +9,14 @@ var sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('default', ['sass']);
 
-gulp.task('sass', ['compile-sass', 'compile-sass-and-minify-css'], function() {
-    gulp.watch(['./scss/**/*.scss', './test/**/*.scss'], ['compile-sass', 'compile-sass-and-minify-css']);
+gulp.task('sass', ['compile-sass'], function() {
+    gulp.watch(['./scss/**/*.scss', './test/**/*.scss'], ['compile-sass']);
 });
 
 gulp.task('compile-sass', function() {
     return gulp.src(['./scss/**/*.scss', './test/**/*.scss'])
         .pipe(sass.sync().on('error', sass.logError))
-        .pipe(gulp.dest('./dist'));
-});
-
-gulp.task('compile-sass-and-minify-css', function() {
-    return gulp.src(['./scss/**/*.scss', './test/**/*.scss'])
-        .pipe(sourcemaps.init())
-        .pipe(sass.sync().on('error', sass.logError))
+        .pipe(gulp.dest('./dist'))
         .pipe(cleanCSS())
         .pipe(rename({ suffix: '.min' }))
         .pipe(sourcemaps.write('./'))
