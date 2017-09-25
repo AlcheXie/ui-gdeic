@@ -1,4 +1,4 @@
-@import "../mixins/css3-compatibility/_user-interface";
+@import "../mixins/css3-compatibility/user-interface";
 $highlightColor: #FE5D2C;
 $lowlightColor: #969696;
 * {
@@ -21,6 +21,18 @@ ul {
 table {
     border-spacing: 0;
     border-collapse: collapse;
+}
+
+.pull-left {
+    float: left!important;
+}
+
+.pull-right {
+    float: right!important;
+}
+
+.clearfix {
+    clear: both!important;
 }
 
 .text-left {
