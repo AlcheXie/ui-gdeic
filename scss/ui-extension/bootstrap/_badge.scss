@@ -1,14 +1,14 @@
 .badge {
-    &.badge-info {
-        background-color: $label-info-bg;
-    }
-    &.badge-success {
-        background-color: $label-success-bg;
-    }
-    &.badge-warning {
-        background-color: $label-warning-bg;
-    }
-    &.badge-danger {
-        background-color: $label-danger-bg;
-    }
+  &.badge-info {
+    background-color: $label-info-bg;
+  }
+  &.badge-success {
+    background-color: $label-success-bg;
+  }
+  &.badge-warning {
+    background-color: $label-warning-bg;
+  }
+  &.badge-danger {
+    background-color: $label-danger-bg;
+  }
 }

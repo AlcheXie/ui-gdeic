@@ -1,67 +1,67 @@
  @mixin _media-query-min($scale) {
-     .block-#{$scale} {
-         display: block!important;
-     }
-     .inline-block-#{$scale} {
-         display: inline-block!important;
-     }
-     .inline-#{$scale} {
-         display: inline!important;
-     }
+   .block-#{$scale} {
+     display: block!important;
+   }
+   .inline-block-#{$scale} {
+     display: inline-block!important;
+   }
+   .inline-#{$scale} {
+     display: inline!important;
+   }
  }
  
  @mixin _media-query-max($scale) {}
  
  @mixin _media-query-between($scale) {
-     .pull-left-#{$scale} {
-         float: left!important;
-     }
-     .pull-right-#{$scale} {
-         float: right!important;
-     }
-     .form-horizontal {
-         .form-group {
-             >.form-group-wrap-#{$scale} {
-                 margin-bottom: 15px;
-                 &:after {
-                     content: "";
-                     display: block;
-                     clear: both;
-                 }
-                 &:last-chlid {
-                     margin-bottom: 0;
-                 }
-             }
+   .pull-left-#{$scale} {
+     float: left!important;
+   }
+   .pull-right-#{$scale} {
+     float: right!important;
+   }
+   .form-horizontal {
+     .form-group {
+       >.form-group-wrap-#{$scale} {
+         margin-bottom: 15px;
+         &:after {
+           content: "";
+           display: block;
+           clear: both;
          }
+         &:last-chlid {
+           margin-bottom: 0;
+         }
+       }
      }
+   }
  }
  
  @each $scale,
  $min,
  $max in $bsScale {
-     @if $min==0 {
-         @include _media-query-min($scale);
-         @media(max-width: $max) {
-             @include _media-query-max($scale);
-             @include _media-query-between($scale);
-         }
+   @if $min==0 {
+     @include _media-query-min($scale);
+     @media(max-width: $max) {
+       @include _media-query-max($scale);
+       @include _media-query-between($scale);
      }
-     @else if $max==none {
-         @include _media-query-max($scale);
-         @media (min-width: $min) {
-             @include _media-query-min($scale);
-             @include _media-query-between($scale);
-         }
+   }
+   @else if $max==none {
+     @include _media-query-max($scale);
+     @media (min-width: $min) {
+       @include _media-query-min($scale);
+       @include _media-query-between($scale);
      }
-     @else {
-         @media (min-width: $min) {
-             @include _media-query-min($scale);
-         }
-         @media(max-width: $max) {
-             @include _media-query-max($scale);
-         }
-         @media(min-width:$min) and (max-width:$max) {
-             @include _media-query-between($scale);
-         }
+   }
+   @else {
+     @media (min-width: $min) {
+       @include _media-query-min($scale);
      }
+     @media(max-width: $max) {
+       @include _media-query-max($scale);
+     }
+     @media(min-width:$min) and (max-width:$max) {
+       @include _media-query-between($scale);
+     }
+   }
  }

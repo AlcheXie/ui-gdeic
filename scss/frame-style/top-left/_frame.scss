@@ -6,294 +6,294 @@ $collapsedMediaWidth: 992px;
 $collapsedSiderWidth: 64px;
 $wechatSmallScreenWidth: 768px;
 @mixin frame() {
-    body {
-        position: absolute;
+  body {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $bodyColor!important;
+    font-size: $mainFontSize!important;
+  }
+  .gdeic {
+    .gdeic-header,
+    .gdeic-sider {
+      position: fixed;
+      z-index: 9;
+      font-family: $mainFontFamily;
+      >.gdeic-sider-nav {
+        @if $frame=='top-left' {
+          margin-top: 30px;
+        }
+        @else {
+          margin-top: 30px + $headerHeight;
+        }
+      }
+    }
+    .gdeic-header {
+      top: 0;
+      width: 100%;
+      height: $headerHeight;
+      @if $frame=='left-top' {
+        margin-left: $siderWidth;
+        @include transition(margin-left $interval);
+      }
+      border-bottom: fnDefaultBorder(fnGetColor($headerHighlightColor, -20));
+      background-color: $headerColor;
+      .gdeic-header-title {
+        display: inline-block;
+        margin: 0 1em;
+        color: $headerTextColor;
+        font-size: $mainFontSize * 1.5;
+        line-height: $headerHeight;
+        @include a(currentColor);
+      }
+      ul.gdeic-header-nav {
+        position: fixed;
         top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: $bodyColor!important;
-        font-size: $mainFontSize!important;
-    }
-    .gdeic {
-        .gdeic-header,
-        .gdeic-sider {
-            position: fixed;
-            z-index: 9;
-            font-family: $mainFontFamily;
-            >.gdeic-sider-nav {
-                @if $frame=='top-left' {
-                    margin-top: 30px;
-                }
-                @else {
-                    margin-top: 30px + $headerHeight;
-                }
-            }
-        }
-        .gdeic-header {
-            top: 0;
-            width: 100%;
+        right: 0;
+        >li {
+          >a {
+            display: inline-block;
             height: $headerHeight;
-            @if $frame=='left-top' {
-                margin-left: $siderWidth;
-                @include transition(margin-left $interval);
+            padding: 0 1em;
+            line-height: $headerHeight;
+            @include a($siderColor);
+          }
+          >ul {
+            display: none;
+            position: absolute;
+            top: $headerHeight;
+            right: 0;
+            border: fnDefaultBorder(fnGetColor($headerHighlightColor, -20));
+            border-top: none;
+            background-color: #FFF;
+            >li {
+              >a {
+                display: block;
+                min-width: 8em;
+                padding: .5em 1em;
+                white-space: nowrap;
+                @include a($headerTextColor);
+              }
+              &:hover {
+                background-color: $headerHighlightColor;
+              }
             }
-            border-bottom: fnDefaultBorder(fnGetColor($headerHighlightColor, -20));
-            background-color: $headerColor;
-            .gdeic-header-title {
-                display: inline-block;
-                margin: 0 1em;
-                color: $headerTextColor;
-                font-size: $mainFontSize * 1.5;
-                line-height: $headerHeight;
-                @include a(currentColor);
-            }
-            ul.gdeic-header-nav {
-                position: fixed;
-                top: 0;
+          }
+          &.gdeic-header-nav-caret {
+            >a {
+              padding-right: 2em;
+              &:after {
+                content: "";
+                position: absolute;
+                top: $headerHeight / 2 - 2px;
                 right: 0;
-                >li {
-                    >a {
-                        display: inline-block;
-                        height: $headerHeight;
-                        padding: 0 1em;
-                        line-height: $headerHeight;
-                        @include a($siderColor);
-                    }
-                    >ul {
-                        display: none;
-                        position: absolute;
-                        top: $headerHeight;
-                        right: 0;
-                        border: fnDefaultBorder(fnGetColor($headerHighlightColor, -20));
-                        border-top: none;
-                        background-color: #FFF;
-                        >li {
-                            >a {
-                                display: block;
-                                min-width: 8em;
-                                padding: .5em 1em;
-                                white-space: nowrap;
-                                @include a($headerTextColor);
-                            }
-                            &:hover {
-                                background-color: $headerHighlightColor;
-                            }
-                        }
-                    }
-                    &.gdeic-header-nav-caret {
-                        >a {
-                            padding-right: 2em;
-                            &:after {
-                                content: "";
-                                position: absolute;
-                                top: $headerHeight / 2 - 2px;
-                                right: 0;
-                                margin: 0 1em;
-                                @include caret(bottom, .3em, $headerTextColor);
-                            }
-                        }
-                    }
-                    &:hover {
-                        background-color: $headerHighlightColor;
-                        >ul {
-                            display: block;
-                        }
-                    }
-                }
+                margin: 0 1em;
+                @include caret(bottom, .3em, $headerTextColor);
+              }
             }
-            .gdeic-trigger {
-                float: left;
-                height: $headerHeight;
-                line-height: $headerHeight;
+          }
+          &:hover {
+            background-color: $headerHighlightColor;
+            >ul {
+              display: block;
             }
+          }
         }
-        .gdeic-trigger {
-            display: block;
-            $width: 25px;
-            $margin: 12px;
-            width: $width + 2 * $margin;
-            text-align: center;
-            font-size: 2em;
-            cursor: pointer;
-            +.gdeic-header-title {
-                margin-left: 0;
+      }
+      .gdeic-trigger {
+        float: left;
+        height: $headerHeight;
+        line-height: $headerHeight;
+      }
+    }
+    .gdeic-trigger {
+      display: block;
+      $width: 25px;
+      $margin: 12px;
+      width: $width + 2 * $margin;
+      text-align: center;
+      font-size: 2em;
+      cursor: pointer;
+      +.gdeic-header-title {
+        margin-left: 0;
+      }
+    }
+    .gdeic-sider {
+      height: 100%;
+      @if $frame=='left-top' {
+        margin-top: -$headerHeight;
+      }
+      overflow-y: auto;
+      background-color: $siderColor;
+      @include transition(width $interval);
+      >ul.gdeic-sider-nav>li {
+        &.gdeic-sider-nav-title {
+          margin: 0 1.5em 2px;
+          border-bottom: 2px dotted $siderHighlightColor;
+          line-height: 2em;
+          color: transparentize($siderTextColor, .5);
+          text-align: center;
+          white-space: nowrap;
+        }
+        &.active {
+          >a {
+            border-top: fnDefaultBorder(fnGetColor($siderHighlightColor, 30));
+            border-bottom: fnDefaultBorder(fnGetColor($siderHighlightColor, -30));
+            background-color: $siderHighlightColor;
+          }
+        }
+        >a {
+          display: block;
+          border-top: fnDefaultBorder(transparent);
+          border-bottom: fnDefaultBorder(transparent);
+          @include transition(padding $interval);
+          @include a($siderTextColor);
+          line-height: 3em;
+          white-space: nowrap;
+          +ul {
+            >li {
+              position: relative;
+              overflow: hidden;
+              @include transition(height .1s);
+              height: 0;
+              background-color: $siderColor;
+              >a {
+                display: block;
+                line-height: 3em;
+                white-space: nowrap;
+                @include a($siderTextColor);
+              }
+              &:hover,
+              &.active {
+                background-color: $siderHighlightColor;
+              }
             }
+          }
+        }
+        &:not([class]) {
+          &:hover {
+            background-color: $siderHighlightColor;
+          }
+        }
+      }
+      >.gdeic-sider-toolbar {
+        position: fixed;
+        bottom: 0;
+        height: 3em;
+        overflow: hidden;
+        @include transition(width $interval);
+        background-color: $siderHighlightColor;
+        line-height: 3em;
+        @include display-box();
+        >.gdeic-sider-toolbar-item {
+          text-align: center;
+          font-size: 1.5em;
+          @include box-flex(1);
+          @include a($siderTextColor);
+          &:hover {
+            color: fnGetColor($siderTextColor, 50);
+          }
+        }
+      }
+    }
+    >.gdeic-content {
+      min-width: 768px - $collapsedSiderWidth;
+      margin-top: $headerHeight;
+      @include transition(margin-left $interval);
+      .gdeic-content-nav {
+        $contentNavHeight: 42px;
+        position: fixed;
+        z-index: 8;
+        width: 100%;
+        min-width: 768px - $collapsedSiderWidth;
+        height: $contentNavHeight;
+        padding: 0 15px;
+        background-color: rgba(red($bodyColor), blue($bodyColor), green($bodyColor), .9);
+        font-family: $mainFontFamily;
+        >a {
+          display: inline-block;
+          padding-right: 1em;
+          line-height: $contentNavHeight - 2px;
+          cursor: default;
+          color: #000;
+          &:not(:first-child) {
+            &:before {
+              content: "/";
+              padding-right: 1em;
+              color: #BBB;
+            }
+          }
+        }
+        ~div {
+          padding: $contentNavHeight 15px 0;
+        }
+      }
+    }
+  }
+  // set menu
+  @include sider-menu();
+  // ie-warning style
+  .gdeic-ie-warning {
+    +.gdeic {
+      >.gdeic-header {
+        top: 50px;
+        ul.gdeic-header-nav {
+          top: 50px;
+        }
+      }
+    }
+  }
+  // set wechat menu
+  @if $wechat==true {
+    .gdeic {
+      .gdeic-header {
+        &.hidden {
+          display: none;
+          +.gdeic-sider {
+            top: 0;
+            height: 100%;
+            +.gdeic-content {
+              margin-top: 15px;
+            }
+          }
+        }
+      }
+      >ul.gdeic-wechat {
+        display: none;
+      }
+    }
+    @media (max-width:$collapsedMediaWidth) {
+      .gdeic {
+        .gdeic-header {
+          display: none;
         }
         .gdeic-sider {
-            height: 100%;
-            @if $frame=='left-top' {
-                margin-top: -$headerHeight;
-            }
-            overflow-y: auto;
-            background-color: $siderColor;
-            @include transition(width $interval);
-            >ul.gdeic-sider-nav>li {
-                &.gdeic-sider-nav-title {
-                    margin: 0 1.5em 2px;
-                    border-bottom: 2px dotted $siderHighlightColor;
-                    line-height: 2em;
-                    color: transparentize($siderTextColor, .5);
-                    text-align: center;
-                    white-space: nowrap;
-                }
-                &.active {
-                    >a {
-                        border-top: fnDefaultBorder(fnGetColor($siderHighlightColor, 30));
-                        border-bottom: fnDefaultBorder(fnGetColor($siderHighlightColor, -30));
-                        background-color: $siderHighlightColor;
-                    }
-                }
-                >a {
-                    display: block;
-                    border-top: fnDefaultBorder(transparent);
-                    border-bottom: fnDefaultBorder(transparent);
-                    @include transition(padding $interval);
-                    @include a($siderTextColor);
-                    line-height: 3em;
-                    white-space: nowrap;
-                    +ul {
-                        >li {
-                            position: relative;
-                            overflow: hidden;
-                            @include transition(height .1s);
-                            height: 0;
-                            background-color: $siderColor;
-                            >a {
-                                display: block;
-                                line-height: 3em;
-                                white-space: nowrap;
-                                @include a($siderTextColor);
-                            }
-                            &:hover,
-                            &.active {
-                                background-color: $siderHighlightColor;
-                            }
-                        }
-                    }
-                }
-                &:not([class]) {
-                    &:hover {
-                        background-color: $siderHighlightColor;
-                    }
-                }
-            }
-            >.gdeic-sider-toolbar {
-                position: fixed;
-                bottom: 0;
-                height: 3em;
-                overflow: hidden;
-                @include transition(width $interval);
-                background-color: $siderHighlightColor;
-                line-height: 3em;
-                @include display-box();
-                >.gdeic-sider-toolbar-item {
-                    text-align: center;
-                    font-size: 1.5em;
-                    @include box-flex(1);
-                    @include a($siderTextColor);
-                    &:hover {
-                        color: fnGetColor($siderTextColor, 50);
-                    }
-                }
-            }
+          width: 0;
+          margin-top: -15px;
+          >.gdeic-sider-toolbar {
+            width: 0;
+          }
         }
-        >.gdeic-content {
-            min-width: 768px - $collapsedSiderWidth;
-            margin-top: $headerHeight;
-            @include transition(margin-left $interval);
-            .gdeic-content-nav {
-                $contentNavHeight: 42px;
-                position: fixed;
-                z-index: 8;
-                width: 100%;
-                min-width: 768px - $collapsedSiderWidth;
-                height: $contentNavHeight;
-                padding: 0 15px;
-                background-color: rgba(red($bodyColor), blue($bodyColor), green($bodyColor), .9);
-                font-family: $mainFontFamily;
-                >a {
-                    display: inline-block;
-                    padding-right: 1em;
-                    line-height: $contentNavHeight - 2px;
-                    cursor: default;
-                    color: #000;
-                    &:not(:first-child) {
-                        &:before {
-                            content: "/";
-                            padding-right: 1em;
-                            color: #BBB;
-                        }
-                    }
-                }
-                ~div {
-                    padding: $contentNavHeight 15px 0;
-                }
+        .gdeic-content {
+          margin-top: 15px;
+          margin-left: 0!important;
+          .gdeic-content-nav {
+            display: none;
+            ~div {
+              padding-top: 0;
             }
+          }
         }
+      }
+      @include wechat-menu($siderColor, $siderHighlightColor, $siderTextColor, $mainFontFamily);
     }
-    // set menu
-    @include sider-menu();
-    // ie-warning style
-    .gdeic-ie-warning {
-        +.gdeic {
-            >.gdeic-header {
-                top: 50px;
-                ul.gdeic-header-nav {
-                    top: 50px;
-                }
-            }
+    @media(max-width:$wechatSmallScreenWidth) {
+      .gdeic {
+        .gdeic-content {
+          min-width: initial;
         }
+      }
     }
-    // set wechat menu
-    @if $wechat==true {
-        .gdeic {
-            .gdeic-header {
-                &.hidden {
-                    display: none;
-                    +.gdeic-sider {
-                        top: 0;
-                        height: 100%;
-                        +.gdeic-content {
-                            margin-top: 15px;
-                        }
-                    }
-                }
-            }
-            >ul.gdeic-wechat {
-                display: none;
-            }
-        }
-        @media (max-width:$collapsedMediaWidth) {
-            .gdeic {
-                .gdeic-header {
-                    display: none;
-                }
-                .gdeic-sider {
-                    width: 0;
-                    margin-top: -15px;
-                    >.gdeic-sider-toolbar {
-                        width: 0;
-                    }
-                }
-                .gdeic-content {
-                    margin-top: 15px;
-                    margin-left: 0!important;
-                    .gdeic-content-nav {
-                        display: none;
-                        ~div {
-                            padding-top: 0;
-                        }
-                    }
-                }
-            }
-            @include wechat-menu($siderColor, $siderHighlightColor, $siderTextColor, $mainFontFamily);
-        }
-        @media(max-width:$wechatSmallScreenWidth) {
-            .gdeic {
-                .gdeic-content {
-                    min-width: initial;
-                }
-            }
-        }
-    }
+  }
 }

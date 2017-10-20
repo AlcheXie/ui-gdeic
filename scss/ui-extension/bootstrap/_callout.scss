@@ -1,53 +1,53 @@
 .callout {
-    padding: 20px;
-    margin: 20px 0;
-    @include border-radius(3px);
-    background-color: $panel-bg;
+  padding: 20px;
+  margin: 20px 0;
+  @include border-radius(3px);
+  background-color: $panel-bg;
+  >.callout-heading {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  &.callout-default {
+    border: fnDefaultBorder($panel-default-border);
+    border-left: 5px solid $label-default-bg;
     >.callout-heading {
-        margin-top: 0;
-        margin-bottom: 5px;
-        font-weight: bold;
+      color: $label-default-bg;
     }
-    &.callout-default {
-        border: fnDefaultBorder($panel-default-border);
-        border-left: 5px solid $label-default-bg;
-        >.callout-heading {
-            color: $label-default-bg;
-        }
+  }
+  &.callout-primary {
+    border: fnDefaultBorder($panel-primary-border);
+    border-left: 5px solid $label-primary-bg;
+    >.callout-heading {
+      color: $label-primary-bg;
     }
-    &.callout-primary {
-        border: fnDefaultBorder($panel-primary-border);
-        border-left: 5px solid $label-primary-bg;
-        >.callout-heading {
-            color: $label-primary-bg;
-        }
+  }
+  &.callout-info {
+    border: fnDefaultBorder($panel-info-border);
+    border-left: 5px solid $label-info-bg;
+    >.callout-heading {
+      color: $label-info-bg;
     }
-    &.callout-info {
-        border: fnDefaultBorder($panel-info-border);
-        border-left: 5px solid $label-info-bg;
-        >.callout-heading {
-            color: $label-info-bg;
-        }
+  }
+  &.callout-success {
+    border: fnDefaultBorder($panel-success-border);
+    border-left: 5px solid $label-success-bg;
+    >.callout-heading {
+      color: $label-success-bg;
     }
-    &.callout-success {
-        border: fnDefaultBorder($panel-success-border);
-        border-left: 5px solid $label-success-bg;
-        >.callout-heading {
-            color: $label-success-bg;
-        }
+  }
+  &.callout-warning {
+    border: fnDefaultBorder($panel-warning-border);
+    border-left: 5px solid $label-warning-bg;
+    >.callout-heading {
+      color: $label-warning-bg;
     }
-    &.callout-warning {
-        border: fnDefaultBorder($panel-warning-border);
-        border-left: 5px solid $label-warning-bg;
-        >.callout-heading {
-            color: $label-warning-bg;
-        }
+  }
+  &.callout-danger {
+    border: fnDefaultBorder($panel-danger-border);
+    border-left: 5px solid $label-danger-bg;
+    >.callout-heading {
+      color: $label-danger-bg;
     }
-    &.callout-danger {
-        border: fnDefaultBorder($panel-danger-border);
-        border-left: 5px solid $label-danger-bg;
-        >.callout-heading {
-            color: $label-danger-bg;
-        }
-    }
+  }
 }

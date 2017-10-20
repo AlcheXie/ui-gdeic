@@ -1,104 +1,104 @@
 .memo {
-    @include display-box();
-    margin-bottom: 20px;
+  @include display-box();
+  margin-bottom: 20px;
+  &>.memo-title {
+    padding: 15px;
+    min-width: 60px;
+    @include border-top-left-radius(5px);
+    @include border-bottom-left-radius(5px);
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  &>.memo-body {
+    @include box-flex(1);
+    padding: 15px;
+    @include border-top-right-radius(5px);
+    @include border-bottom-right-radius(5px);
+    line-height: 18px;
+  }
+  &.memo-default {
     &>.memo-title {
-        padding: 15px;
-        min-width: 60px;
-        @include border-top-left-radius(5px);
-        @include border-bottom-left-radius(5px);
-        text-align: center;
-        font-weight: bold;
-        font-size: 18px;
+      background-color: $label-default-bg;
+      color: $label-color;
     }
     &>.memo-body {
-        @include box-flex(1);
-        padding: 15px;
-        @include border-top-right-radius(5px);
-        @include border-bottom-right-radius(5px);
-        line-height: 18px;
+      border: fnDefaultBorder($label-default-bg);
+      background-color: $label-color;
+      color: $label-default-bg;
+      .badge {
+        background-color: $label-default-bg;
+      }
     }
-    &.memo-default {
-        &>.memo-title {
-            background-color: $label-default-bg;
-            color: $label-color;
-        }
-        &>.memo-body {
-            border: fnDefaultBorder($label-default-bg);
-            background-color: $label-color;
-            color: $label-default-bg;
-            .badge {
-                background-color: $label-default-bg;
-            }
-        }
+  }
+  &.memo-primary {
+    &>.memo-title {
+      background-color: $label-primary-bg;
+      color: $label-color;
     }
-    &.memo-primary {
-        &>.memo-title {
-            background-color: $label-primary-bg;
-            color: $label-color;
-        }
-        &>.memo-body {
-            border: fnDefaultBorder($label-primary-bg);
-            background-color: $label-color;
-            color: $label-primary-bg;
-            .badge {
-                background-color: $label-primary-bg;
-            }
-        }
+    &>.memo-body {
+      border: fnDefaultBorder($label-primary-bg);
+      background-color: $label-color;
+      color: $label-primary-bg;
+      .badge {
+        background-color: $label-primary-bg;
+      }
     }
-    &.memo-info {
-        &>.memo-title {
-            background-color: $label-info-bg;
-            color: $label-color;
-        }
-        &>.memo-body {
-            border: fnDefaultBorder($label-info-bg);
-            background-color: $label-color;
-            color: $label-info-bg;
-            .badge {
-                background-color: $label-info-bg;
-            }
-        }
+  }
+  &.memo-info {
+    &>.memo-title {
+      background-color: $label-info-bg;
+      color: $label-color;
     }
-    &.memo-success {
-        &>.memo-title {
-            background-color: $label-success-bg;
-            color: $label-color;
-        }
-        &>.memo-body {
-            border: fnDefaultBorder($label-success-bg);
-            background-color: $label-color;
-            color: $label-success-bg;
-            .badge {
-                background-color: $label-success-bg;
-            }
-        }
+    &>.memo-body {
+      border: fnDefaultBorder($label-info-bg);
+      background-color: $label-color;
+      color: $label-info-bg;
+      .badge {
+        background-color: $label-info-bg;
+      }
     }
-    &.memo-warning {
-        &>.memo-title {
-            background-color: $label-warning-bg;
-            color: $label-color;
-        }
-        &>.memo-body {
-            border: fnDefaultBorder($label-warning-bg);
-            background-color: $label-color;
-            color: $label-warning-bg;
-            .badge {
-                background-color: $label-warning-bg;
-            }
-        }
+  }
+  &.memo-success {
+    &>.memo-title {
+      background-color: $label-success-bg;
+      color: $label-color;
     }
-    &.memo-danger {
-        &>.memo-title {
-            background-color: $label-danger-bg;
-            color: $label-color;
-        }
-        &>.memo-body {
-            border: fnDefaultBorder($label-danger-bg);
-            background-color: $label-color;
-            color: $label-danger-bg;
-            .badge {
-                background-color: $label-danger-bg;
-            }
-        }
+    &>.memo-body {
+      border: fnDefaultBorder($label-success-bg);
+      background-color: $label-color;
+      color: $label-success-bg;
+      .badge {
+        background-color: $label-success-bg;
+      }
     }
+  }
+  &.memo-warning {
+    &>.memo-title {
+      background-color: $label-warning-bg;
+      color: $label-color;
+    }
+    &>.memo-body {
+      border: fnDefaultBorder($label-warning-bg);
+      background-color: $label-color;
+      color: $label-warning-bg;
+      .badge {
+        background-color: $label-warning-bg;
+      }
+    }
+  }
+  &.memo-danger {
+    &>.memo-title {
+      background-color: $label-danger-bg;
+      color: $label-color;
+    }
+    &>.memo-body {
+      border: fnDefaultBorder($label-danger-bg);
+      background-color: $label-color;
+      color: $label-danger-bg;
+      .badge {
+        background-color: $label-danger-bg;
+      }
+    }
+  }
 }

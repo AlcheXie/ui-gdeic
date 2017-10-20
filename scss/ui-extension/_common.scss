@@ -2,69 +2,69 @@
 $highlightColor: #FE5D2C;
 $lowlightColor: #969696;
 * {
-    @include box-sizing(border-box);
+  @include box-sizing(border-box);
 }
 
 body {
-    margin: 0;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 ul {
-    margin: 0;
-    padding: 0;
-    li {
-        list-style: none;
-    }
+  margin: 0;
+  padding: 0;
+  li {
+    list-style: none;
+  }
 }
 
 table {
-    border-spacing: 0;
-    border-collapse: collapse;
+  border-spacing: 0;
+  border-collapse: collapse;
 }
 
 .pull-left {
-    float: left!important;
+  float: left!important;
 }
 
 .pull-right {
-    float: right!important;
+  float: right!important;
 }
 
 .clearfix {
-    clear: both!important;
+  clear: both!important;
 }
 
 .text-left {
-    text-align: left!important;
+  text-align: left!important;
 }
 
 .text-center {
-    text-align: center!important;
+  text-align: center!important;
 }
 
 .text-right {
-    text-align: right!important;
+  text-align: right!important;
 }
 
 .text-ellipsis {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .text-bold {
-    font-weight: bold!important;
+  font-weight: bold!important;
 }
 
 .text-highlight {
-    color: #FE5D2C!important;
+  color: #FE5D2C!important;
 }
 
 .text-lowlight {
-    color: #969696!important;
+  color: #969696!important;
 }
 
 .pointer {
-    cursor: pointer;
+  cursor: pointer;
 }

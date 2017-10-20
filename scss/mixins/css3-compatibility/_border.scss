@@ -1,82 +1,82 @@
 @function fnDefaultBorder($color) {
-    $_border: 1px solid $color;
-    @return $_border;
+  $_border: 1px solid $color;
+  @return $_border;
 }
 
 @mixin border-radius($radius) {
-    -webkit-border-radius: $radius;
-    -moz-border-radius: $radius;
-    border-radius: $radius;
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
 }
 
 @mixin border-top-left-radius($radius) {
-    -webkit-border-top-left-radius: $radius;
-    -moz-border-radius-topleft: $radius;
-    border-top-left-radius: $radius;
+  -webkit-border-top-left-radius: $radius;
+  -moz-border-radius-topleft: $radius;
+  border-top-left-radius: $radius;
 }
 
 @mixin border-top-right-radius($radius) {
-    -webkit-border-top-right-radius: $radius;
-    -moz-border-radius-topright: $radius;
-    border-top-right-radius: $radius;
+  -webkit-border-top-right-radius: $radius;
+  -moz-border-radius-topright: $radius;
+  border-top-right-radius: $radius;
 }
 
 @mixin border-bottom-right-radius($radius) {
-    -webkit-border-bottom-right-radius: $radius;
-    -moz-border-radius-bottomright: $radius;
-    border-bottom-right-radius: $radius;
+  -webkit-border-bottom-right-radius: $radius;
+  -moz-border-radius-bottomright: $radius;
+  border-bottom-right-radius: $radius;
 }
 
 @mixin border-bottom-left-radius($radius) {
-    -webkit-border-bottom-left-radius: $radius;
-    -moz-border-radius-bottomleft: $radius;
-    border-bottom-left-radius: $radius;
+  -webkit-border-bottom-left-radius: $radius;
+  -moz-border-radius-bottomleft: $radius;
+  border-bottom-left-radius: $radius;
 }
 
 @mixin box-shadow($shadow) {
-    -webkit-box-shadow: $shadow;
-    -moz-box-shadow: $shadow;
-    box-shadow: $shadow;
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  box-shadow: $shadow;
 }
 
 @mixin border-image($option) {
-    -webkit-border-image: $option;
-    -moz-border-image: $option;
-    -o-border-image: $option;
-    border-image: $option;
+  -webkit-border-image: $option;
+  -moz-border-image: $option;
+  -o-border-image: $option;
+  border-image: $option;
 }
 
 @mixin border-image-source($option) {
-    -webkit-border-image-source: $option;
-    -moz-border-image-source: $option;
-    -o-border-image-source: $option;
-    border-image-source: $option;
+  -webkit-border-image-source: $option;
+  -moz-border-image-source: $option;
+  -o-border-image-source: $option;
+  border-image-source: $option;
 }
 
 @mixin border-image-slice($option) {
-    -webkit-border-image-slice: $option;
-    -moz-border-image-slice: $option;
-    -o-border-image-slice: $option;
-    border-image-slice: $option;
+  -webkit-border-image-slice: $option;
+  -moz-border-image-slice: $option;
+  -o-border-image-slice: $option;
+  border-image-slice: $option;
 }
 
 @mixin border-image-width($option) {
-    -webkit-border-image-width: $option;
-    -moz-border-image-width: $option;
-    -o-border-image-width: $option;
-    border-image-width: $option;
+  -webkit-border-image-width: $option;
+  -moz-border-image-width: $option;
+  -o-border-image-width: $option;
+  border-image-width: $option;
 }
 
 @mixin border-image-outset($option) {
-    -webkit-border-image-outset: $option;
-    -moz-border-image-outset: $option;
-    -o-border-image-outset: $option;
-    border-image-outset: $option;
+  -webkit-border-image-outset: $option;
+  -moz-border-image-outset: $option;
+  -o-border-image-outset: $option;
+  border-image-outset: $option;
 }
 
 @mixin border-image-repeat($option) {
-    -webkit-border-image-repeat: $option;
-    -moz-border-image-repeat: $option;
-    -o-border-image-repeat: $option;
-    border-image-repeat: $option;
+  -webkit-border-image-repeat: $option;
+  -moz-border-image-repeat: $option;
+  -o-border-image-repeat: $option;
+  border-image-repeat: $option;
 }
