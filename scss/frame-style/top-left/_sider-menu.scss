@@ -1,170 +1,172 @@
-@mixin sider-menu() {
-  @mixin _collapsedSider() {
-    @if $frame=='left-top' {
-      .gdeic-header {
-        margin-left: $collapsedSiderWidth;
-      }
-    }
-    .gdeic-sider {
-      width: $collapsedSiderWidth;
-      overflow: initial;
-      >ul.gdeic-sider-nav>li {
-        position: relative;
-        &.gdeic-sider-nav-title {
-          display: none;
-        }
-        >a {
-          padding-left: ($collapsedSiderWidth - $mainFontSize) / 2;
-          >span {
-            &.glyphicon,
-            &.fa,
-            &.anticon {
-              +span {
-                display: none;
-              }
-            }
-          }
-          +ul {
-            position: absolute;
-            top: 0;
-            left: $collapsedSiderWidth + 2px;
-            background-color: transparent;
-            >li {
-              >a {
-                padding: 0 1.5em;
-                &:before {
-                  display: none;
-                }
-              }
-              &:first-child {
-                @include border-top-left-radius(5px);
-                @include border-top-right-radius(5px);
-              }
-              &:last-child {
-                @include border-bottom-left-radius(5px);
-                @include border-bottom-right-radius(5px);
-              }
-            }
-          }
-          &:hover {
-            &:before {
-              content: attr(data-name);
-              display: block;
-              position: absolute;
-              left: $collapsedSiderWidth + 2px;
-              @include transform(translateY(50%));
-              padding: 0 .5em 0 1em;
-              @include border-radius(.5em);
-              @include border-top-left-radius(1em);
-              @include border-bottom-left-radius(1em);
-              background-color: $siderColor;
-              color: $siderTextColor;
-              font-size: smaller;
-              line-height: 2em;
-            }
-          }
-        }
-        &.active {
-          >ul {
-            display: none;
-          }
-        }
-        &:hover {
-          >a+ul {
-            display: block;
-            >li {
-              height: 3em;
-            }
-          }
-        }
-      }
-      >.gdeic-sider-toolbar {
-        width: $collapsedSiderWidth;
-      }
-    }
-    .gdeic-content {
+@mixin _collapsedSider() {
+  @if $frame=='left-top' {
+    .gdeic-header {
       margin-left: $collapsedSiderWidth;
     }
   }
-  @mixin _expandSider() {
-    @if $frame=='left-top' {
-      .gdeic-header {
-        margin-left: $siderWidth;
+  .gdeic-sider {
+    width: $collapsedSiderWidth;
+    overflow: initial;
+    >ul.gdeic-sider-nav>li {
+      position: relative;
+      &.gdeic-sider-nav-title {
+        display: none;
       }
-    }
-    .gdeic-sider {
-      width: $siderWidth;
-      overflow-x: hidden;
-      >ul.gdeic-sider-nav>li {
-        &.gdeic-sider-nav-title {
-          display: block;
-        }
-        >a {
-          padding-left: 15px;
-          >span {
-            &.glyphicon,
-            &.fa,
-            &.anticon {
-              +span {
-                display: inline;
-                margin-left: .5em;
-              }
-            }
-          }
-          +ul {
-            position: static;
-            background-color: fnGetColor($siderColor, -10);
-            >li {
-              >a {
-                padding-left: 2.7em;
-              }
-            }
-          }
-          &:hover {
-            &:before {
+      >a {
+        padding-left: ($collapsedSiderWidth - $mainFontSize) / 2;
+        >span {
+          &.glyphicon,
+          &.fa,
+          &.anticon {
+            +span {
               display: none;
             }
-            +ul>li {
-              height: 0;
+          }
+        }
+        +ul {
+          position: absolute;
+          top: 0;
+          left: $collapsedSiderWidth + 2px;
+          background-color: transparent;
+          >li {
+            >a {
+              padding: 0 1.5em;
+              &:before {
+                display: none;
+              }
+            }
+            &:first-child {
+              @include border-top-left-radius(5px);
+              @include border-top-right-radius(5px);
+            }
+            &:last-child {
+              @include border-bottom-left-radius(5px);
+              @include border-bottom-right-radius(5px);
             }
           }
         }
-        &.active {
-          >a {
-            +ul {
-              position: static;
-              >li {
-                height: 3em;
-                >a {
-                  &:before {
-                    content: '';
-                    display: block;
-                    position: absolute;
-                    top: 50%;
-                    left: 1.5em;
-                    width: .5em;
-                    height: .5em;
-                    @include border-radius(.5em);
-                    background-color: $siderTextColor;
-                    @include transform(translateY(-50%))
-                  }
+        &:hover {
+          &:before {
+            content: attr(data-name);
+            display: block;
+            position: absolute;
+            left: $collapsedSiderWidth + 2px;
+            @include transform(translateY(50%));
+            padding: 0 .5em 0 1em;
+            @include border-radius(.5em);
+            @include border-top-left-radius(1em);
+            @include border-bottom-left-radius(1em);
+            background-color: $siderColor;
+            color: $siderTextColor;
+            font-size: smaller;
+            line-height: 2em;
+          }
+        }
+      }
+      &.active {
+        >ul {
+          display: none;
+        }
+      }
+      &:hover {
+        >a+ul {
+          display: block;
+          >li {
+            height: 3em;
+          }
+        }
+      }
+    }
+    >.gdeic-sider-toolbar {
+      width: $collapsedSiderWidth;
+    }
+  }
+  .gdeic-content {
+    margin-left: $collapsedSiderWidth;
+  }
+}
+
+@mixin _expandSider() {
+  @if $frame=='left-top' {
+    .gdeic-header {
+      margin-left: $siderWidth;
+    }
+  }
+  .gdeic-sider {
+    width: $siderWidth;
+    overflow-x: hidden;
+    >ul.gdeic-sider-nav>li {
+      &.gdeic-sider-nav-title {
+        display: block;
+      }
+      >a {
+        padding-left: 15px;
+        >span {
+          &.glyphicon,
+          &.fa,
+          &.anticon {
+            +span {
+              display: inline;
+              margin-left: .5em;
+            }
+          }
+        }
+        +ul {
+          position: static;
+          background-color: fnGetColor($siderColor, -10);
+          >li {
+            >a {
+              padding-left: 2.7em;
+            }
+          }
+        }
+        &:hover {
+          &:before {
+            display: none;
+          }
+          +ul>li {
+            height: 0;
+          }
+        }
+      }
+      &.active {
+        >a {
+          +ul {
+            position: static;
+            >li {
+              height: 3em;
+              >a {
+                &:before {
+                  content: '';
+                  display: block;
+                  position: absolute;
+                  top: 50%;
+                  left: 1.5em;
+                  width: .5em;
+                  height: .5em;
+                  @include border-radius(.5em);
+                  background-color: $siderTextColor;
+                  @include transform(translateY(-50%))
                 }
               }
             }
           }
-          >ul {
-            display: block;
-          }
+        }
+        >ul {
+          display: block;
         }
       }
-      >.gdeic-sider-toolbar {
-        width: $siderWidth;
-      }
     }
-    .gdeic-content {
-      margin-left: $siderWidth;
+    >.gdeic-sider-toolbar {
+      width: $siderWidth;
     }
   }
+  .gdeic-content {
+    margin-left: $siderWidth;
+  }
+}
+
+@mixin sider-menu() {
   @media(min-width: $collapsedMediaWidth + 1px) {
     .gdeic {
       @include _expandSider();
