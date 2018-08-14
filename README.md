@@ -1,2 +1,3 @@
 # ui-gdeic
-Some common skins
+
+Mixins for common use.
