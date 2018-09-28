@@ -217,7 +217,7 @@ $wechatSmallScreenWidth: 768px;
           line-height: $contentNavHeight - 2px;
           cursor: default;
           color: #000;
-          &:not(:first-child) {
+          &:not(:first-of-type) {
             &:before {
               content: "/";
               padding-right: 1em;
