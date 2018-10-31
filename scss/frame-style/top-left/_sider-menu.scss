@@ -116,7 +116,7 @@
           background-color: fnGetColor($siderColor, -10);
           >li {
             >a {
-              padding-left: 2.7em;
+              padding-left: 3.7em;
             }
           }
         }
@@ -141,7 +141,7 @@
                   display: block;
                   position: absolute;
                   top: 50%;
-                  left: 1.5em;
+                  left: 2.5em;
                   width: .5em;
                   height: .5em;
                   @include border-radius(.5em);
